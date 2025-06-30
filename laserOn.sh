@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# Lese den Wert von S
+S_VALUE=$1
+
 # GPIO Pin-Nummer (z.B. 18 für GPIO 18, der PWM-fähig ist)
 PIN=12
 
-# PWM-Wert (zwischen 0 und 255, wobei 0 ausgeschaltet und 255 maximaler Wert ist)
-PWM_VALUE=5
+# Überprüfen, ob der Wert zwischen 0 und 255 liegt
+if [[ "$S_VALUE" -ge 0 && "$S_VALUE" -le 255 ]]; then
+    # Setze den GPIO-Pin als Ausgang
+	pigs p $PIN $S_VALUE
 
-# Setze den GPIO-Pin als Ausgang
-pigs p $PIN $PWM_VALUE
+	echo "GPIO Pin $PIN wurde auf PWM-Wert $S_VALUE gesetzt."
+else
+    echo "Ungültiger S-Wert: $S_VALUE (erlaubt: 0-255)"
+    exit 1
+fi
 
-echo "GPIO Pin $PIN wurde auf PWM-Wert $PWM_VALUE gesetzt."

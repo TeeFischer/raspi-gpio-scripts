@@ -4,7 +4,7 @@
 PIN=12
 
 # PWM-Wert (zwischen 0 und 255, wobei 0 ausgeschaltet und 255 maximaler Wert ist)
-PWM_VALUE=200
+PWM_VALUE=255
 
 # Anzahl an Scritten bis zum Max-Wert
 PWM_STEPS=20
